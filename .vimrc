@@ -6,10 +6,17 @@ set number relativenumber
 set hlsearch
 filetype plugin on
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+set undodir=~/.vim/undo_dir
+set undofile
+set ignorecase smartcase
 
 nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <esc><esc> :noh<return><esc>
+
+" remap chunk deletion to include undo breakpoints
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
 
 " INSTALL VIM-PLUG IF IT IS NOT PRESENT
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
